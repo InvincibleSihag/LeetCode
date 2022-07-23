@@ -7,8 +7,14 @@ class Solution:
             return math.inf
         if self.memo.get(current) is not None:
             return self.memo[current]
-        result = min([self.findChange(current-x, coins) for x in coins])
-        self.memo[current] = result + 1
+        # result = min([self.findChange(current-x, coins) for x in coins])
+        mini = math.inf
+        for x in coins:
+            res = self.findChange(current-x, coins)
+            self.memo[current-x] = res
+            if res < mini:
+                mini = res
+        self.memo[current] = mini + 1
         return self.memo[current]
     
     def coinChange(self, coins: List[int], amount: int) -> int:
