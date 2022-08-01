@@ -16,6 +16,4 @@ class Solution:
             else:
                 s2.append(ch)
         # print(s1, s2)
-        if s1==s2:
-            return True
-        return False
+        return s1==s2
