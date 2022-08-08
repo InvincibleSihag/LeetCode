@@ -9,7 +9,7 @@ class Solution:
                 for ele in subset:
                     new_dict[ele] += 1
                 newHash = []
-                for key in sorted(new_dict.keys()):
+                for key in new_dict.keys():
                     newHash.append(str(key) + "-" + str(new_dict[key])) 
                 tup = tuple(newHash)
                 if tup not in subsetsList:
@@ -21,5 +21,5 @@ class Solution:
                 helper(arr, subset, i+1)
                 subset.pop()
                 helper(arr, subset, i+1)
-        helper(nums, [], 0)
+        helper(sorted(nums), [], 0)
         return output
