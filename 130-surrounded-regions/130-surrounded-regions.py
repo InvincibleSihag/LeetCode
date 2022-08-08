@@ -15,8 +15,11 @@ class Solution:
             for index in path:
                 board[index[0]][index[1]] = "X"
         
-        def helper(index, path):
-            
+        def add_to_explored(path):
+            for index in path:
+                already_explored.add(index)
+        
+        def helper(index, path): 
             res = True
             for vec in vector:
                 new_index = (vec[0]+index[0], vec[1]+index[1])
@@ -34,6 +37,8 @@ class Solution:
             for j in range(c):
                 path = set()
                 path.add((i, j))
-                if board[i][j] != "X" and helper((i, j), path):
+                if (i, j) not in already_explored and board[i][j] != "X" and helper((i, j), path):
                     change_board(path)
+                else:
+                    add_to_explored(path)
         return board
