@@ -16,6 +16,9 @@ class Solution:
                     res = max(res, helper(i)+1)
             memo[cur_i] = res
             return res
-
-        return max([helper(i) for i in range(n)])
+        res = 0
+        for i in range(n):
+            res = max(res, helper(i))
+            memo[i] = res 
+        return res
     
