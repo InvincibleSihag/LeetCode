@@ -9,6 +9,6 @@ class Solution:
         def helper(node):
             if node is None:
                 return 0
-            return max(helper(node.left), helper(node.right)) + 1
+            return max(helper(node.left)+1, helper(node.right)+1)
         return helper(root)
     
