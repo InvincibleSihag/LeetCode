@@ -3,5 +3,5 @@
 
 # DELETE FROM Person WHERE COUNT()
 
-delete from Person where id not in (select id from (select min(id) as id from Person group by Person.email) as a);
+delete from Person where id not in (select minid from (select min(id) as minid from Person group by Person.email) as a);
 
