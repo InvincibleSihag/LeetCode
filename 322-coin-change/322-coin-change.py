@@ -11,7 +11,7 @@ class Solution:
         mini = math.inf
         for x in coins:
             res = self.findChange(current-x, coins)
-            self.memo[current-x] = res
+            # self.memo[current-x] = res
             if res < mini:
                 mini = res
         self.memo[current] = mini + 1
