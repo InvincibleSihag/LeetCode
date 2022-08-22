@@ -4,13 +4,21 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+from collections import defaultdict
+
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        memo = defaultdict(lambda: None)
         res = 0
         def depth(node):
             if node is None:
                 return 0
-            return max(depth(node.left), depth(node.right)) + 1
+            if memo[node] is not None:
+                return memo[node]
+            res = max(depth(node.left), depth(node.right)) + 1
+            memo[node] = res
+            return res
         
         def helper(node):
             nonlocal res
